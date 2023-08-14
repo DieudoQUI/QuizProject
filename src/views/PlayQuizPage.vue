@@ -1,70 +1,4 @@
-<template>
-    <div class="container">
-      <Navbar/>
-      <main class="playQuizPage">
-        <h1>Le quiz</h1>
-        
-        <section class="quiz" v-if="!quizCompleted">
-          <div class="quiz-info">
-            <span class="question">{{ getCurrentQuestion.question }}</span>
-            <span class="timer">Temps restant : {{ timer }}s</span>
-            <span class="score">Score {{ score }}/{{ quizsApp.length }}</span>
-          </div>
-          
-          <div class="options">
-            <label 
-              v-for="(option, index) in getCurrentQuestion.options" 
-              :for="'option' + index" 
-              :class="`option ${
-                selectedOption === index  
-                  ? index === getCurrentQuestion.answer 
-                    ? 'correct' 
-                    : 'wrong'
-                  : ''
-              } ${
-                selectedOption !== null && index !== selectedOption 
-                  ? 'disabled'
-                  : ''
-              }`">
-              <input 
-                type="radio" 
-                :id="'option' + index" 
-                :name="getCurrentQuestion.index" 
-                :value="index" 
-                v-model="selectedOption" 
-                :disabled="selectedOption !== null"
-                @change="SetAnswer" 
-              />
-              <span>{{ option }}</span>
-            </label>
-          </div>
-          
-          <button 
-            @click="NextQuestion" 
-            :disabled="selectedOption === null">
-            {{ 
-              getCurrentQuestion.index === quizsApp.length - 1 
-                ? 'Terminer' 
-                : selectedOption === null
-                  ? 'Sélectionner une option'
-                  : 'Question suivante'
-            }}
-          </button>
-        </section>
-      
-        <section v-else>
-          <h2>Vous avez terminé le quiz !</h2>
-          <p>Votre score est de {{ score }}/{{ quizsApp.length }}</p>
-          <div class="previousLink">
-            <button @click="replayQuiz" class="custom--btn--button">Rejouer le quiz</button>
-            <button @click="goToQuizCategory" class="custom--btn--button">Revenir vers Catégorie</button>
-          </div>
-        </section>
-      </main>
-    </div>
-  </template>
-  
-  <script setup>
+  <script lang="ts" setup>
   import { useQuizAppStore } from '@/stores/quizApp';
   import { onMounted, onBeforeMount } from 'vue';
   import { storeToRefs } from 'pinia';
@@ -151,6 +85,72 @@
     await initialise();
   });
   </script>
+
+<template>
+  <div class="container">
+    <Navbar/>
+    <main class="playQuizPage">
+      <h1>Le quiz</h1>
+      
+      <section class="quiz" v-if="!quizCompleted">
+        <div class="quiz-info">
+          <span class="question">{{ getCurrentQuestion.question }}</span>
+          <span class="timer">Temps restant : {{ timer }}s</span>
+          <span class="score">Score {{ score }}/{{ quizsApp.length }}</span>
+        </div>
+        
+        <div class="options">
+          <label 
+            v-for="(option, index) in getCurrentQuestion.options" 
+            :for="'option' + index" 
+            :class="`option ${
+              selectedOption === index  
+                ? index === getCurrentQuestion.answer 
+                  ? 'correct' 
+                  : 'wrong'
+                : ''
+            } ${
+              selectedOption !== null && index !== selectedOption 
+                ? 'disabled'
+                : ''
+            }`">
+            <input 
+              type="radio" 
+              :id="'option' + index" 
+              :name="getCurrentQuestion.index" 
+              :value="index" 
+              v-model="selectedOption" 
+              :disabled="selectedOption !== null"
+              @change="SetAnswer" 
+            />
+            <span>{{ option }}</span>
+          </label>
+        </div>
+        
+        <button 
+          @click="NextQuestion" 
+          :disabled="selectedOption === null">
+          {{ 
+            getCurrentQuestion.index === quizsApp.length - 1 
+              ? 'Terminer' 
+              : selectedOption === null
+                ? 'Sélectionner une option'
+                : 'Question suivante'
+          }}
+        </button>
+      </section>
+    
+      <section v-else>
+        <h2>Vous avez terminé le quiz !</h2>
+        <p>Votre score est de {{ score }}/{{ quizsApp.length }}</p>
+        <div class="previousLink">
+          <button @click="replayQuiz" class="custom--btn--button">Rejouer le quiz</button>
+          <button @click="goToQuizCategory" class="custom--btn--button">Revenir vers Catégorie</button>
+        </div>
+      </section>
+    </main>
+  </div>
+</template>
 
 
 <style scoped>
