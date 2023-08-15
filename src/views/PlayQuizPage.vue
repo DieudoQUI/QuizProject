@@ -38,6 +38,7 @@
     return value;
   });
   
+  
   const getCurrentQuestion = computed(() => {
     let question = quizsApp.value[currentQuestion.value];
     question.index = currentQuestion.value;
@@ -268,7 +269,7 @@ p {
 	text-align: center;
 }
 .previousLink{
-    margin-top: 2rem;
-    line-height: 1.5;
+  display: flex;
+  gap: 50px;
 }
 </style>

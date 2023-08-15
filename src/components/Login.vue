@@ -42,7 +42,7 @@
      <body> 
         <div class="connection__block"> 
             <div class="connection__block__left">
-                <p>Bienvenue! Merci de bien vouloir vous connecter  pour demeurer un érudit.</p>
+                <p>Bienvenue! Demeurer un érudit, en vous connectant.</p>
             </div>
             <div class="connection__block__right">
                 <div class="connection__block__right__title">
@@ -137,6 +137,7 @@
     .connection__block__left{
         width: calc(727px - 300px); 
         text-align: center;
+        padding: 1rem;
     }
     .connection__block__left p{
         font-size: 55px;

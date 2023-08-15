@@ -79,9 +79,7 @@ const router = useRouter()
     }
     .register__block__left{
         width: calc(727px - 300px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
+       /*  text-align: center; */
         padding: 1rem;
     }
     .register__block__left p{

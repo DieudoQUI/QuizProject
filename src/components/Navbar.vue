@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import {ref} from 'vue'
 import { RouterLink } from 'vue-router';
 import images1 from '../assets/images1.jpeg'
+
 const img = images1
 
 </script>
@@ -52,7 +52,7 @@ const img = images1
         gap: 20px;
     }
     .menu__item{
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         color: #2c9bc6;
         font-weight: 700;
     }

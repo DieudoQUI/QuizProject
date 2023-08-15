@@ -60,22 +60,21 @@
             <!--  footer starts -->
             <footer>
                <div class="container">
-                <div class="footer__content">
-                    <div class="footer-left">
-                        <RouterLink to="/quizCategory" class="lo">Quizzer</RouterLink>
+                    <div class="footer__content">
+                        <div class="footer-left">
+                            <RouterLink to="/quizCategory" class="lo">Quizzer</RouterLink>
+                        </div>
+                        <div class="footer-right">
+                            <ul>
+                                <li><a href="#" title="whatsapp" class="mdi mdi-whatsapp"></a></li> 
+                                <li><a href="#" title="facebook" class="mdi mdi-facebook"></a></li>
+                                <li><a href="#" title="linkedin" class="mdi mdi-linkedin"></a></li>
+                                <li><a href="#" title="twitter" class="mdi mdi-twitter"></a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="footer-right">
-                        <ul>
-                            <li><a href="#" title="whatsapp" class="mdi mdi-whatsapp"></a></li> 
-                            <li><a href="#" title="facebook" class="mdi mdi-facebook"></a></li>
-                            <li><a href="#" title="linkedin" class="mdi mdi-linkedin"></a></li>
-                            <li><a href="#" title="twitter" class="mdi mdi-twitter"></a></li>
-                        </ul>
-                    </div>
-                </div>
                </div>
             </footer>
-
             <!--  footer ends -->
         </div>  
    </body>
@@ -84,8 +83,8 @@
 <style scoped>
     
  .category__content{
-    width: 80%;
-    margin: auto;
+    /* width: 80%;
+    margin: auto; */
     text-align: center;
     padding-bottom: 100px;
 } 
@@ -107,9 +106,10 @@ p{
     margin-top: 5%;
     display: flex;
     justify-content: space-between;
+    
 }
 .category-col{
-    flex-basis: 31%;
+    flex-basis: 31%; 
     background: #fff3f3;
     border-radius: 10px;
     margin-bottom: 5%;
@@ -132,26 +132,25 @@ h3{
 }
 
 /* ----==========Contact start=============------ */
+.contact{
+    margin-bottom: 3rem;
+}
 .heading{
     text-align: center;
     margin: 0 6rem;
     font-size: 4rem;
     padding: 1rem;
-    border-bottom: .1rem solid #fff4;
+    border-bottom: 2px solid var(--color-blue);
     color: #fff;
 }
-.heading span {
-    color: salmon;
-}
-
 form{
     width:500px;
-    margin: 0 auto;
+    margin: 0 auto; 
     margin-top: 30px;
     border-top-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    border: 2px solid #999;
-    padding: 1rem;
+    padding: 1.5rem;
+    box-shadow: inset 23px 4px 7px -25px #c9ccd7, 7px 0px 8px 2px#c9ccd7; 
 }
 .formular h1{
     padding-top: 2rem;
@@ -167,46 +166,43 @@ form{
 }
 
  input{
-    background: gris;
-/*     margin: 0px auto;
-    outline: none;
-    background: none;
     border: none;
-    width: 100%;
-    height: 50px;
-    color: #eee;
-    background-color: salmon;
-    font-size: 25px; */
-    color: #000;
+  padding: 0.5rem 1rem;
+  border-radius: 9px;
+  font-size: 17px;
+
+   
 } 
- .btn3{
-    margin: 20px auto;
+ .btn{
+    margin: 0  auto;
     display: block;
     padding: .5rem .75rem;
-    border: 2px solid salmon;
-    border-radius: 18px;
+    border: 2px solid var(--color-blue);
+    border-radius: 12px;
     background-color: transparent;
-    color: salmon;
+    color: var(--color-blue);
     font-size: 18px;
     font-weight: 700;
     cursor: pointer;
 } 
+.btn:hover{
+    background-color: var(--color-blue);
+    color: #fff;
+}
 ::placeholder{
-    color: #000;
-    font-size: 25px;
+    color: #333;
+    font-size: 17px;
 }
 /* ----==========Contact ends=============------ */
 /* ----==========footer=============------ */
-.footer__content{
-    border-top: 2px solid #555;
-    padding: 5rem 0 5rem 0;
+.footer__content{ 
+    padding:10rem 0 2rem 0; 
+    border-top: 2px solid var(--color-blue);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
-/*  footer .footer-left a{
-     color: #eee;
-}  */
+
 footer .footer-right ul{
     display: flex;
     color: #eee;
@@ -219,7 +215,6 @@ footer .footer-right ul li a{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: salmon;
     height: 60px;
     width: 60px;
     border-radius: 50%;
@@ -227,12 +222,11 @@ footer .footer-right ul li a{
     color: #2c9bc6;
     font-size: 40px;
 }
-footer .footer-right ul li a .fa-brands{
-   /*  color: #000; */
+footer .footer-right ul li .mdi{
     color: #2c9bc6;
 }
-footer .footer-right ul li a .fa-brands:hover{
-    box-shadow: 10px 10px 10px white;
+footer .footer-right ul li .mdi:hover{
+    box-shadow: 0px 0px 10px white;
 }
 
 </style>
