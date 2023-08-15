@@ -4,6 +4,7 @@ import QuizCategory from '@/views/QuizCategory.vue'
 import AccessPage from '@/views/AccessPage.vue' 
 import PlayQuizPage from '@/views/PlayQuizPage.vue'
 import ClassementPage from '@/views/ClassementPage.vue'
+import NotFound from '@/views/NotFound.vue'
 
 
 
@@ -29,6 +30,10 @@ const router = createRouter({
       path:'/classementPage',
       name:'/classementPage',
       component:ClassementPage, 
+    },
+    {
+      path:'/*',
+      component:NotFound, 
     }
   ]
 })
