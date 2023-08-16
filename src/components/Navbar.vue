@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { RouterLink } from 'vue-router';
+import Username from '@/components/Username.vue'
 import images1 from '../assets/images1.jpeg'
+
 
 const img = images1
 
@@ -20,8 +22,8 @@ const img = images1
                         <div class="user__img__container">
                             <img :src="img" alt="">
                         </div>
-                        <div class="user__img__cont">
-                            <span>boco@gmail.com</span>
+                        <div class="user__mail">
+                            <Username/>
                         </div>
                     </div> 
                 </div>   
@@ -76,7 +78,5 @@ const img = images1
         border-radius: 50%;
        
     } 
-    .user .user__img__cont span{
-        color: #2c9bc6;
-    }
+   
 </style>

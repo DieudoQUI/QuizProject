@@ -17,7 +17,7 @@ const router = useRouter()
         const {data, error} = await supabase.auth.signUp({
             email:userDataRegister.value.email,
             password:userDataRegister.value.password,
-            confirmPassword:userDataRegister.value.confirmPassword
+          
         })
         if(error){
             console.log(error);
