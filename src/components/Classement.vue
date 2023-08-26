@@ -1,4 +1,4 @@
-<script lang="ts" set up>
+<script lang="ts" setup>
 
 
 let date = new Date();
