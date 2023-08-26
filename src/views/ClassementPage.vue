@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import Classement from '@/components/Classement.vue'
+
 import Navbar from '@/components/Navbar.vue';
+import Classement from '@/components/Classement.vue'
 
 </script>
 
