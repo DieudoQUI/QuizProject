@@ -32,7 +32,7 @@ const router = createRouter({
       component:ClassementPage, 
     },
     {
-      path:'/:catchAll(.*)*',
+      path:'/*',
       component:NotFound, 
     }
   ]

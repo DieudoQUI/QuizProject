@@ -1,4 +1,11 @@
 <script lang="ts" set up>
+import Username from '@/components/Username.vue';
+
+let date = new Date();
+let datePlayQuiz = `${date.getDate()} " + " ${date.getMonth()} " + " ${date.getFullYear()}`
+
+console.log(datePlayQuiz);
+
 
 
 </script>
@@ -21,8 +28,8 @@
                   <tbody class="">
                     <tr>
                       <td>1</td>
-                      <td>exemple@gmail.com</td>
-                      <td>12/12/2005</td>
+                       <Username>  </Username>  
+                      <td>{{datePlayQuiz}} </td>
                       <td>2</td>
                       <td>5ème</td>
                       <td>

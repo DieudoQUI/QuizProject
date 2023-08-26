@@ -2,6 +2,7 @@
  import Navbar from '@/components/Navbar.vue' 
  import router from '@/router';
 
+
   function goToPlayQuiz(){
     router.push('/playQuizPage')
   }
@@ -56,10 +57,9 @@
                 </div>   
             </section>
             <!-- Contact section ends -->
-
-            <!--  footer starts -->
+           <!--  footer starts -->
             <footer>
-               <div class="container">
+                <div class="container">
                     <div class="footer__content">
                         <div class="footer-left">
                             <RouterLink to="/quizCategory" class="lo">Quizzer</RouterLink>
@@ -73,9 +73,10 @@
                             </ul>
                         </div>
                     </div>
-               </div>
+                </div>
             </footer>
             <!--  footer ends -->
+           
         </div>  
    </body>
 </template>
@@ -194,6 +195,7 @@ form{
     font-size: 17px;
 }
 /* ----==========Contact ends=============------ */
+
 /* ----==========footer=============------ */
 .footer__content{ 
     padding:10rem 0 2rem 0; 

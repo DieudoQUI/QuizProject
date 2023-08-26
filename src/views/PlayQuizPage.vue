@@ -6,6 +6,7 @@
   import { RouterLink } from 'vue-router';
   import Navbar from '@/components/Navbar.vue';
   import router from '@/router';
+
   
   function goToQuizCategory(){
     router.push('/quizCategory')
@@ -37,6 +38,7 @@
     });
     return value;
   });
+  console.log(score);
   
   
   const getCurrentQuestion = computed(() => {
@@ -150,7 +152,9 @@
         </div>
       </section>
     </main>
+   
   </div>
+  
 </template>
 
 
