@@ -12,8 +12,6 @@ type userData = {
 const userEmail = ref()
 
 export const useUserStore = defineStore('user', () =>{
-
-   
     /*   const saveUserConnect = useLocalStorage('user',null)  */
   
     const users = ref<userData[]>([]);

@@ -1,6 +1,7 @@
   <script lang="ts" setup>
   import { useQuizAppStore } from '@/stores/quizApp';
-  import { useUserStore } from '@/stores/userList';
+  import {useHistoriquePlayerStore} from '@/stores/historiquePlayerList';
+  import { useUserStore} from '@/stores/userList'
   import { onMounted, onBeforeMount } from 'vue';
   import { storeToRefs } from 'pinia';
   import { ref, computed } from 'vue';
@@ -14,7 +15,7 @@
   const quizScore = ref()
   const timeMake = ref()
   let userDayPlayed = ref()
-/*   const userEmail = ref() */
+
 
   function dateQuiz(){
     let date = new Date()
@@ -25,6 +26,7 @@
     })
     userDayPlayed.value = datePlayQuiz
   }
+
   function goToQuizCategory(){
     router.push('/quizCategory')
   }
@@ -36,8 +38,16 @@
     startTimer();
   }
   
-  const { initialise, sendPlayerStoryData} = useQuizAppStore();
-  const { quizsApp, userEmail } = storeToRefs(useQuizAppStore());
+  const { initialise } = useQuizAppStore();
+  const { quizsApp } = storeToRefs(useQuizAppStore());
+
+  const {getUserConnect} = useUserStore();
+  const {userEmail} = storeToRefs(useUserStore());
+
+
+  const {sendPlayerStoryData} = useHistoriquePlayerStore();
+  const { playerStoryData} = storeToRefs(useHistoriquePlayerStore());
+
   
   const quizCompleted = ref(false);
   const currentQuestion = ref(0);
@@ -99,13 +109,19 @@
      
     }
   };
-  const playerData = ref({
+  playerStoryData.value.namePlayer.push(userEmail)
+  playerStoryData.value.quizScore.push(score)
+  playerStoryData.value.timeMake.push(timer)
+  playerStoryData.value.userPlayDate.push(userDayPlayed)
+
+   playerStoryData = {
+        users_id : id?,
         namePlayer : userEmail,
         quizScore : score,
         timeMake : timer,
-        userDayPlay : userDayPlayed
-      })
-      sendPlayerStoryData(playerData.value)
+        userPlayDate : userDayPlayed
+      }
+      sendPlayerStoryData(playerStoryData)
   
   onMounted(async () => {
     await initialise();
