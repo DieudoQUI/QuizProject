@@ -1,18 +1,22 @@
 <script lang="ts" setup>
+ import type FooterQuizVue from '@/components/FooterQuiz.vue';
  import Navbar from '@/components/Navbar.vue' 
  import router from '@/router';
+ import FooterQuiz from '@/components/FooterQuiz.vue';
 
 
   function goToPlayQuiz(){
     router.push('/playQuizPage')
   }
-
-
 </script>
+
 <template>
    <body>
         <div class="category__wrapper">
-         <Navbar/> 
+            <!--  Navbar starts -->
+             <Navbar/> 
+            <!--  Navbar ends -->
+            <!--  Category starts -->
             <section class="category__content">
               <div class="container">
                     <h1>Categorie</h1>
@@ -36,8 +40,8 @@
                         </div>
                     </div>
               </div>
-
             </section>
+            <!--  Category ends -->
 
             <!-- Contact section starts -->
             <section class="contact" id="contact">
@@ -49,7 +53,7 @@
                                 <h1>Partagez avec nous vos impressions</h1>
                                 <input type="text" name="name" id="name" placeholder="Name">
                                 <input type="email" name="email" id="email" placeholder="Email">
-                                <textarea name="" id="description" cols="30" rows="10" placeholder="Ecrivez un un commentaire pour nous donner votre avis" ></textarea>
+                                <textarea name="" id="description" cols="30" rows="10" placeholder="Ecrivez un commentaire pour nous donner votre avis" ></textarea>
                                 <a href="mailto:dieudonnepaqui@gmail.com" class="btn">Envoyez</a>
                             </div>
                         </form>
@@ -57,26 +61,10 @@
                 </div>   
             </section>
             <!-- Contact section ends -->
+
            <!--  footer starts -->
-            <footer>
-                <div class="container">
-                    <div class="footer__content">
-                        <div class="footer-left">
-                            <RouterLink to="/quizCategory" class="lo">Quizzer</RouterLink>
-                        </div>
-                        <div class="footer-right">
-                            <ul>
-                                <li><a href="#" title="whatsapp" class="mdi mdi-whatsapp"></a></li> 
-                                <li><a href="#" title="facebook" class="mdi mdi-facebook"></a></li>
-                                <li><a href="#" title="linkedin" class="mdi mdi-linkedin"></a></li>
-                                <li><a href="#" title="twitter" class="mdi mdi-twitter"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+           <FooterQuiz/>
             <!--  footer ends -->
-           
         </div>  
    </body>
 </template>
@@ -84,8 +72,6 @@
 <style scoped>
     
  .category__content{
-    /* width: 80%;
-    margin: auto; */
     text-align: center;
     padding-bottom: 100px;
 } 
@@ -99,7 +85,7 @@ h1{
 p{
     color: #777;
     font-size: 14px;
-    font-weight: 300px;
+    font-weight: 300;
     line-height: 22px;
     padding: 10px;
 }
@@ -195,40 +181,5 @@ form{
     font-size: 17px;
 }
 /* ----==========Contact ends=============------ */
-
-/* ----==========footer=============------ */
-.footer__content{ 
-    padding:10rem 0 2rem 0; 
-    border-top: 2px solid var(--color-blue);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-footer .footer-right ul{
-    display: flex;
-    color: #eee;
-}
-footer .footer-right ul li{
-    padding: 1rem 2rem;
-    
-}
-footer .footer-right ul li a{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    border: 3px solid #eee;
-    color: #2c9bc6;
-    font-size: 40px;
-}
-footer .footer-right ul li .mdi{
-    color: #2c9bc6;
-}
-footer .footer-right ul li .mdi:hover{
-    box-shadow: 0px 0px 10px white;
-}
 
 </style>

@@ -6,8 +6,6 @@ import PlayQuizPage from '@/views/PlayQuizPage.vue'
 import ClassementPage from '@/views/ClassementPage.vue'
 import NotFound from '@/views/NotFound.vue'
 
-
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [

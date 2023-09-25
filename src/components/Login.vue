@@ -1,26 +1,44 @@
 <script lang="ts" setup>
     import { supabase } from '@/lib/supabase';
     import {ref} from 'vue'
- 
     import { useRouter } from 'vue-router';
+    
     const router = useRouter()
 
     const userDataLogin = ref({
         email:'',
         password:''
     })
+    const messageErreur = ref()
+    const messageSuccess = ref()
+    
     async function loginAccount() {
-        const {data, error} = await supabase.auth.signInWithPassword({
-           email:userDataLogin.value.email,
-           password:userDataLogin.value.password
-        })
-        if(error){
-            console.log(error);
-        }else{
-            console.log(data)
-            router.replace('/quizCategory')
+        try {
+           
+            const { data, error } = await supabase.auth.signInWithPassword({
+            email: userDataLogin.value.email,
+            password: userDataLogin.value.password
+            });
+
+            if (error) {
+            console.error(error);
+            messageErreur.value = "Une erreur s'est produite lors de la connexion. Veuillez réessayer plus tard.";
+            } else {
+                messageErreur.value = ""
+            console.log(data);
+
+            messageSuccess.value = "En cours de connexion......";
+            setTimeout(() => {
+                messageSuccess.value = ""; 
+                router.replace('/quizCategory');
+            }, 5000); 
+            }
+        } catch (error) {
+            console.error(error);
+            messageErreur.value = "Une erreur s'est produite lors de la connexion. Veuillez réessayer plus tard.";
         }
     }
+
 
     /* async function logout() {
         const {error} = await supabase.auth.signOut({
@@ -46,6 +64,8 @@
             </div>
             <div class="connection__block__right">
                 <div class="connection__block__right__title">
+                    <p v-if="messageErreur" style="color: red; font-size: 18px; font-weight: 500;">{{ messageErreur }}</p>
+                    <p v-if="messageSuccess" style="color: green;  font-size: 18px; font-weight: 500;">{{ messageSuccess }}</p>
                     <h2>Connectez-vous pour quizer!</h2>
                 </div>
                 <form id="loginForm" @submit.prevent>

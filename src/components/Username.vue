@@ -2,17 +2,20 @@
 import { supabase } from '@/lib/supabase';
 import { ref } from 'vue';
 
-const userEmail = ref()
 
-async function getSession() {
-    const user = await supabase.auth.getUser();;
-    if(user){
-        userEmail.value = user.data.user?.email?.split("@")[0]
-        console.log(userEmail);
-        
-    }    
-}
-getSession()
+
+ const userEmail = ref() 
+ async function getUserEmail(){
+  const user = await supabase.auth.getUser();
+  if(user){
+    userEmail.value = user.data.user?.email?.split("@")[0];
+    console.log(userEmail)
+  }
+ }
+
+
+
+/* const props = defineProps<{userEmail: {}}>() */
 
 
 </script>

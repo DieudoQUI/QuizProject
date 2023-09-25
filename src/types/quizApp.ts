@@ -5,3 +5,4 @@ export type quizApp = {
     options: Array<string>,
     selected:number
 }
+

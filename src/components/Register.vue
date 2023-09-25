@@ -4,7 +4,8 @@ import { createClient } from '@supabase/supabase-js';
 import { supabase } from '@/lib/supabase';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-const router = useRouter()
+
+    const router = useRouter()
 
 
     const userDataRegister = ref({
@@ -12,18 +13,25 @@ const router = useRouter()
         password:'',
         confirmPassword:''
     })
+    const messageErreur = ref()
+    const messageSuccess = ref()
 
     async function createAccount() {
         const {data, error} = await supabase.auth.signUp({
             email:userDataRegister.value.email,
             password:userDataRegister.value.password,
-          
         })
         if(error){
             console.log(error);
+            messageErreur.value = "Une erreur s'est produite lors de la connexion. Veuillez réessayer plus tard.";
         }else{
             console.log(data)
-            router.replace('/quizCategory')
+            messageSuccess.value= "En cours d'inscription ....."
+            setTimeout(()=>{
+                messageSuccess.value='' 
+                router.replace('/quizCategory')
+            },5000);
+            
         }
     }
 
@@ -37,6 +45,8 @@ const router = useRouter()
             </div>
             <div class="register__block__right">
                 <div class="register__block__right__title">
+                    <p v-if="messageErreur" style="color: red; font-size: 18px; font-weight: 500;">{{ messageErreur }}</p>
+                    <p v-if="messageSuccess" style="color: green;  font-size: 18px; font-weight: 500;">{{ messageSuccess }}</p>
                     <h2>Veuillez vous inscrire</h2>
                 </div>
                 <form id="loginForm" @submit.prevent>

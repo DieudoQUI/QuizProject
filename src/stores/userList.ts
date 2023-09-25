@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { supabase } from "@/lib/supabase"
+import { useLocalStorage } from "@vueuse/core";
 
 
 type userData = {
@@ -8,10 +9,15 @@ type userData = {
     password:string;
    
 };
+const userEmail = ref()
 
 export const useUserStore = defineStore('user', () =>{
+
+   
+    /*   const saveUserConnect = useLocalStorage('user',null)  */
   
     const users = ref<userData[]>([]);
+    const userEmail =ref<string>()
 
 
     async function initialise(){
@@ -30,14 +36,27 @@ export const useUserStore = defineStore('user', () =>{
             users.value.push(data[0])
         }
     }
-   
-    /*  async function getUserName(user:userData) {
-       let data = supabase.auth.getSession
-        
-    const userName = computed(() => data.split('@'))
-    function userName() {
+
     
-      }
+
+    async function getUserConnect() {
+        const { data } = await supabase.auth.getSession();
+        if(data.session){
+            userEmail.value = data.session?.user.email
+            console.log(userEmail);
+            return userEmail;       
+        }    
+    }
+   
+     /* async function getUserName() {
+       let data = supabase.auth.getSession
+       if(users){
+           userEmail.value = users.data.user?.email?.split("@")[0];
+           console.log(userEmail); 
+        const userName = computed(() => data.user?.email.split('@'))
+        console.log(userName) ;
+    
     } */
-    return {users,initialise,addUser }
-})
+    return {users, userEmail, initialise,addUser, getUserConnect}
+    }
+)

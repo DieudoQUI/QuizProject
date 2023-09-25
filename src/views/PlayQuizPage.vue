@@ -1,13 +1,30 @@
   <script lang="ts" setup>
   import { useQuizAppStore } from '@/stores/quizApp';
+  import { useUserStore } from '@/stores/userList';
   import { onMounted, onBeforeMount } from 'vue';
   import { storeToRefs } from 'pinia';
   import { ref, computed } from 'vue';
   import { RouterLink } from 'vue-router';
   import Navbar from '@/components/Navbar.vue';
   import router from '@/router';
+  import FooterQuiz from '@/components/FooterQuiz.vue';
+  import type { historique } from '@/types/historique';
 
-  
+  const namePlayer = ref()
+  const quizScore = ref()
+  const timeMake = ref()
+  let userDayPlayed = ref()
+/*   const userEmail = ref() */
+
+  function dateQuiz(){
+    let date = new Date()
+    let datePlayQuiz = date.toLocaleString('fr-FR',{
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+    })
+    userDayPlayed.value = datePlayQuiz
+  }
   function goToQuizCategory(){
     router.push('/quizCategory')
   }
@@ -19,13 +36,13 @@
     startTimer();
   }
   
-  const { initialise } = useQuizAppStore();
-  const { quizsApp } = storeToRefs(useQuizAppStore());
+  const { initialise, sendPlayerStoryData} = useQuizAppStore();
+  const { quizsApp, userEmail } = storeToRefs(useQuizAppStore());
   
   const quizCompleted = ref(false);
   const currentQuestion = ref(0);
   const timer = ref(50);
-  let countdownInterval;
+  let countdownInterval:number;
   
   let selectedOption = null;
   
@@ -78,8 +95,17 @@
       startTimer();
     } else {
       quizCompleted.value = true;
+
+     
     }
   };
+  const playerData = ref({
+        namePlayer : userEmail,
+        quizScore : score,
+        timeMake : timer,
+        userDayPlay : userDayPlayed
+      })
+      sendPlayerStoryData(playerData.value)
   
   onMounted(async () => {
     await initialise();
@@ -91,7 +117,7 @@
 
 <template>
   <div class="container">
-    <Navbar/>
+    <Navbar :userEmail="userEmail"/>
     <main class="playQuizPage">
       <h1>Le quiz</h1>
       
@@ -152,7 +178,7 @@
         </div>
       </section>
     </main>
-   
+    <FooterQuiz/>
   </div>
   
 </template>
@@ -164,7 +190,6 @@
 	box-sizing: border-box;
 	font-family: 'Montserrat', sans-serif;
 }
-
 
 .playQuizPage {
 	display: flex;
@@ -199,15 +224,14 @@ h1 {
 }
 
 .quiz-info.score {
-    color: #fff;
-	/* color: #FFF; */
+  color: #fff;
 	font-size: 1.5rem;
 }
 
 .options {
 	margin-bottom: 1rem;
-    color: #fff;
-    font-size: 1.5rem;
+  color: #fff;
+  font-size: 1.5rem;
 }
 
 .option {

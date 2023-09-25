@@ -7,7 +7,7 @@ import { ref } from 'vue'
 
 import Access from '@/components/Access.vue';
 
-const mode = ref<ModeAccessPage>()
+const mode = ref<ModeAccessPage>('signIn')
 function selectMode(value: ModeAccessPage) {
      mode.value = value 
 
