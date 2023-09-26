@@ -109,7 +109,7 @@
      
     }
   };
-  playerStoryData.value.namePlayer.push(userEmail)
+/*   playerStoryData.value.namePlayer.push(userEmail)
   playerStoryData.value.quizScore.push(score)
   playerStoryData.value.timeMake.push(timer)
   playerStoryData.value.userPlayDate.push(userDayPlayed)
@@ -121,7 +121,7 @@
         timeMake : timer,
         userPlayDate : userDayPlayed
       }
-      sendPlayerStoryData(playerStoryData)
+      sendPlayerStoryData(playerStoryData) */
   
   onMounted(async () => {
     await initialise();
