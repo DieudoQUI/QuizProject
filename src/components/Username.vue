@@ -17,7 +17,7 @@ import { ref } from 'vue';
 <template>
 
 <div>
-    <p id="usermail"> {{ userEmail }}</p>
+    <p id="usermail" v-if="userEmail"> {{ userEmail }}</p>
 </div>
 </template>
 
